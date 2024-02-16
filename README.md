@@ -1,6 +1,6 @@
 # ListaTareaSIS213
 
-#Resumen de Tareas
+#  Resumen de Tareas
 ### Planificacion 
 vamos a realizar el programa en Java, utilizaremos menus para la interaccion de ususario utilizando programacion modular y POO
 
@@ -8,12 +8,12 @@ vamos a realizar el programa en Java, utilizaremos menus para la interaccion de 
 diseño de mockaps
 
 
-###Ramas
+### Ramas
 
 Crearemos las rama feature/Principal
 
 
-###Funciones
+### Funciones
 agregar tareas
 cambiar estado
 borrar tareas
