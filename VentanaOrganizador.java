@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import java.awt.Button;
 
 public class VentanaOrganizador extends JFrame {
 
@@ -23,7 +24,7 @@ public class VentanaOrganizador extends JFrame {
 
 	    public VentanaOrganizador() {
 	        setTitle("Organizador de Tareas");
-	        setSize(400, 300);
+	        setSize(410, 329);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	        JPanel panel = new JPanel();
@@ -31,17 +32,34 @@ public class VentanaOrganizador extends JFrame {
 
 	        // Componentes del formulario
 	        JLabel lblTarea = new JLabel("Nueva Tarea:");
+	        lblTarea.setBounds(5, 63, 62, 13);
 	        JTextField txtTarea = new JTextField(20);
+	        txtTarea.setBounds(72, 60, 166, 19);
 	        JButton btnAgregar = new JButton("Agregar");
-	        JList<String> lstTareas = new JList<>();
+	        btnAgregar.setBounds(243, 59, 69, 21);
 	        listModel = new DefaultListModel<>();
-	        lstTareas.setModel(listModel);
+	        panel.setLayout(null);
 
 	        // Agregar componentes al panel
 	        panel.add(lblTarea);
 	        panel.add(txtTarea);
 	        panel.add(btnAgregar);
-	        panel.add(new JScrollPane(lstTareas));
+	        JScrollPane scrollPane = new JScrollPane();
+	        scrollPane.setBounds(32, 89, 258, 130);
+	        panel.add(scrollPane);
+	        JList<String> lstTareas = new JList<>();
+	        scrollPane.setViewportView(lstTareas);
+	        lstTareas.setModel(listModel);
+	        
+	       
+	        JButton btnNewButton_1 = new JButton("Eliminar");
+	        btnNewButton_1.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		 eliminarTarea(lstTareas.getSelectedIndex());
+	        	}
+	        });
+	        btnNewButton_1.setBounds(103, 229, 85, 21);
+	        panel.add(btnNewButton_1);
 
 	        // Manejar el evento de clic en el botón "Agregar"
 	        btnAgregar.addActionListener(new ActionListener() {
@@ -64,6 +82,15 @@ public class VentanaOrganizador extends JFrame {
 	        }
 	    }
 
+	    
+	    private void eliminarTarea(int index) {
+	        if (index >= 0 && index < tasks.size()) {
+	            tasks.remove(index);
+	            actualizarLista();
+	        }
+	    }
+
+	 
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(new Runnable() {
 	            public void run() {
